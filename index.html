@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Gear & Finery — Repair & Alterations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F1E8;
+    --cream-dark: #EDE8DA;
+    --ink: #1E2023;
+    --ink-mid: #3B3E42;
+    --ink-light: #6B6E72;
+    --gold: #8A6E3A;
+    --gold-light: #C9A96E;
+    --border: rgba(30,32,35,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 2.5rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-mid);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--gold);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-cta:hover { color: var(--gold); }
+
+  .hero-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-light);
+    margin: 3rem 0 0;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* SECTION */
+  section {
+    padding: 5rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-intro {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    max-width: 540px;
+    margin-bottom: 3rem;
+    line-height: 1.85;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .service-item {
+    padding: 2rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .service-item:not(:last-child) {
+    padding-right: 2rem;
+  }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-aside {
+    padding-top: 0.5rem;
+  }
+
+  .about-monogram {
+    width: 72px;
+    height: 72px;
+    border: 1px solid var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-detail {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    line-height: 2;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--cream-dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-section > .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-item-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-item-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .contact-item-value a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-light);
+    transition: color 0.2s;
+  }
+  .contact-item-value a:hover { color: var(--gold); }
+
+  .contact-note {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-weight: 300;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .social-links a {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-links a:hover { color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    font-weight: 300;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .hero { padding: 4rem 1.25rem 3rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .contact-section > .inner { padding: 3.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Field Gear & Finery</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-tag">Repair · Alterations · Mending</p>
+    <h1>Clothing that fits<br>the way it <em>should.</em></h1>
+    <p class="hero-sub">Field Gear & Finery offers expert clothing repair and alterations — careful, skilled work that extends the life of the garments you love.</p>
+    <a href="#services" class="hero-cta">Explore services →</a>
+    <div class="hero-rule"></div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label">What I offer</p>
+    <h2 class="section-heading">A full range of <em>repair</em> services</h2>
+    <p class="section-intro">From simple hems to full garment repair, every piece receives the same careful attention — done right, and made to last.</p>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <p class="service-num">01</p>
+        <h3 class="service-title">Hems & Length</h3>
+        <p class="service-desc">Pants, skirts, dresses, and sleeves — hemmed cleanly and evenly to your exact measurements.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">02</p>
+        <h3 class="service-title">Taking In & Letting Out</h3>
+        <p class="service-desc">Reshaping side seams and waistbands for a fit that flatters, whether sizing up or down.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">03</p>
+        <h3 class="service-title">Outdoor & Field Gear</h3>
+        <p class="service-desc">Technical fabrics, outerwear, packs, and workwear — repaired and patched with appropriate materials and methods.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">04</p>
+        <h3 class="service-title">Repairs & Mending</h3>
+        <p class="service-desc">Torn seams, worn fabric, broken zippers, missing buttons — restored so the garment earns more years.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">05</p>
+        <h3 class="service-title">Zipper Replacement</h3>
+        <p class="service-desc">Invisible, exposed, and separating zippers replaced with care, matched to the original as closely as possible.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">06</p>
+        <h3 class="service-title">Custom Work</h3>
+        <p class="service-desc">Have something specific in mind? Bring it in and we'll talk through what's possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-inner">
+      <div class="about-aside">
+        <div class="about-monogram">FG&F</div>
+        <p class="about-detail">
+          Repair &amp; Alterations<br>
+          Field Gear · Clothing<br>
+          Skilled Craftsmanship
+        </p>
+      </div>
+      <div class="about-text">
+        <h2 class="section-heading" style="margin-bottom:1rem;">Work done <em>well.</em></h2>
+        <p>Field Gear & Finery is a small, hands-on repair and alterations practice built on careful craftsmanship and honest work. Every garment that comes in gets real attention — not a rushed fix, but a considered one.</p>
+        <p>Whether you need a hem, a zipper replaced, or a repair that makes a worn-out favorite wearable again, the goal is always the same: clothing that fits and holds together the way it should.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="inner">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-heading">Let's work <em>together.</em></h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-item-label">Text for a fast repair</p>
+        <p class="contact-item-value"><a href="sms:+13152474924">315-247-4924</a></p>
+      </div>
+      <div>
+        <p class="contact-item-label">Email</p>
+        <p class="contact-item-value"><a href="mailto:jennifer@jpiperconsulting.com">jennifer@jpiperconsulting.com</a></p>
+      </div>
+      <div>
+        <p class="contact-item-label">Find us</p>
+        <p class="contact-item-value" style="display:flex; flex-direction:column; gap:0.4rem;">
+          <a href="https://www.facebook.com/61570464284476/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/fieldgearandfinery/" target="_blank" rel="noopener">Instagram</a>
+        </p>
+      </div>
+    </div>
+    <p class="contact-note">Texting is the fastest way to get a quick answer — for longer questions, email works great too.</p>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">Field Gear & Finery</span>
+  <div class="social-links">
+    <a href="https://www.facebook.com/61570464284476/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com/fieldgearandfinery/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+  <span class="footer-copy">© 2026 Field Gear & Finery</span>
+</footer>
+
+</body>
+</html>
